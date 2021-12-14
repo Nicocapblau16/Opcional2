@@ -5,35 +5,33 @@ using TMPro;
 
 public class Counter : MonoBehaviour
 {
-    private int counter = 10;
+    private int startCounter = 10;
 
     private TextMeshProUGUI counterText;
 
-    public string counterString;
+    //public string counterString;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         counterText = GetComponent<TextMeshProUGUI>();
         StartCoroutine("BackwardCounter");
+        counterText.text = "Starting...";
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
     private IEnumerator BackwardCounter()
     {
-        while (counter > 0)
+        for (int counter = startCounter; counter >= 0; counter -= 1)
         {
-            counter -= 1;
-            counterString = counter.ToString();
-            counterText.Text = counterString;
-            yield return WaitForSeconds(1f);
+            //counter = counter.ToString();
+            counterText.text = counter.ToString();
+            yield return new WaitForSeconds(1f);
         }
         
 
     }
+    //no he podido cambiar la opcion a solid color porque ni me aparece la opcion
+
+    //https://youtu.be/57n4dZAPxNY min 3:00 
 }
